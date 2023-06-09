@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+    body {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 95vh;
+    }
+    
+    .countdown {
+      color: white;
+      font-size: 120px;
+      text-align: center;
+      font-family: 'Inconsolata', monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown" id="countdown"></div>
+
+  <script>
+    function updateCountdown() {
+      var endDate = new Date('2023-09-02');
+      var now = new Date();
+      var timeLeft = endDate - now;
+
+      var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      var countdownElement = document.getElementById('countdown');
+      countdownElement.innerHTML = days + ':' + hours + ':' + minutes + ':' + seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
